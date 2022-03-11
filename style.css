@@ -1,0 +1,116 @@
+:root {
+  --bgcolor: #1f1f47;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  background: var(--bgcolor);
+  color: white;
+}
+
+#heading {
+  font-size: 8rem;
+  position: absolute;
+  text-transform: uppercase;
+  transition: all 300ms ease;
+  width: fit-content;
+  top: 40%;
+  left: 35%;
+  z-index: -5;
+  /* cursor: pointer; */
+}
+
+#heading:hover {
+  transform: skew(10deg);
+}
+
+#heading::before {
+  content: attr(data-name);
+  position: absolute;
+  top: 0;
+  left: -20px;
+  background: var(--bgcolor);
+  height: 8rem;
+  overflow: hidden;
+  transition: all 300ms ease;
+  padding-left: 20px;
+}
+
+#heading:hover::before {
+  top: -3px;
+  left: 0px;
+  color: hotpink;
+}
+
+#heading::after {
+  content: "";
+  height: 4px;
+  width: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: hotpink;
+  transition: all 300ms ease;
+}
+
+#heading:hover::after {
+  width: 120%;
+  outline: 5px solid rgb(2, 0, 36);
+}
+
+/* blob in background */
+
+.blob {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(
+    180deg,
+    rgba(47, 184, 255, 0.42) 31.77%,
+    #5c9df1 100%
+  );
+  mix-blend-mode: color-dodge;
+  -webkit-animation: move 25s infinite alternate;
+  animation: move 25s infinite alternate;
+  transition: 1s cubic-bezier(0.07, 0.8, 0.16, 1);
+}
+
+.blob:hover {
+  width: 520px;
+  height: 520px;
+  -webkit-filter: blur(30px);
+  filter: blur(30px);
+  box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.6),
+    inset 100px 100px 0 0px #fa709a, inset 200px 200px 0 0px #784ba8,
+    inset 300px 300px 0 0px #2b86c5;
+}
+
+@-webkit-keyframes move {
+  from {
+    transform: translate(-100px, -50px) rotate(-90deg);
+    border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+  }
+
+  to {
+    transform: translate(500px, 100px) rotate(-10deg);
+    border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+  }
+}
+
+@keyframes move {
+  from {
+    transform: translate(-100px, -50px) rotate(-90deg);
+    border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+  }
+
+  to {
+    transform: translate(500px, 100px) rotate(-10deg);
+    border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+  }
+}
